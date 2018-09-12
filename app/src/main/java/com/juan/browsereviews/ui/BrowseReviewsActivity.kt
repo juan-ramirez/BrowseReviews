@@ -3,7 +3,6 @@ package com.juan.browsereviews.ui
 import android.arch.lifecycle.ViewModelProviders
 import android.os.Bundle
 import android.support.design.widget.Snackbar
-import android.support.v4.widget.SwipeRefreshLayout
 import android.support.v7.app.AppCompatActivity
 import android.support.v7.widget.DividerItemDecoration
 import com.juan.browsereviews.R
@@ -51,9 +50,10 @@ class BrowseReviewsActivity : AppCompatActivity() {
 
     fun refreshItems() {
         reviewsListViewModel.getReviews(selectedSort.sort, selectedDirection.direction)
-        if (reviewsListViewModel.success) {
-            swipeRefreshLayout.isRefreshing = false
+        if (!reviewsListViewModel.success) {
+            Snackbar.make(coordinator_layout, "Something failed, probably ghosts or something, wanna swipe to refresh and try again?", Snackbar.LENGTH_LONG).show();
         }
+        swipeRefreshLayout.isRefreshing = false
     }
 
     enum class SortBy(val sort: String) {

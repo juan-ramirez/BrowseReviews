@@ -32,12 +32,17 @@ class ReviewsListViewModel : BaseViewModel() {
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(
-                        { reviewListResult -> onRetrieveReviewsList(reviewListResult.data) }
+                        { reviewListResult -> onRetrieveReviewsList(reviewListResult.data) },
+                        { onRetrieveReviewsError() }
                 )
     }
 
     private fun onRetrieveReviewsList(reviewListResult: List<Review>) {
         reviewListAdapter.updateReviewList(reviewListResult)
         success = true
+    }
+
+    private fun onRetrieveReviewsError() {
+        success = false
     }
 }
