@@ -23,5 +23,4 @@ Usage:
 - Display how many reviews and the overall rating not implemented
 - Display only Count 0 and Page 0 for testing purposes (can be adjusted under any arbitrary decisions but I didn't)
 
-
-![Office gif] (https://media.giphy.com/media/ePjRFDXClszza/giphy.gif)
+<img src="https://media.giphy.com/media/ePjRFDXClszza/giphy.gif" width="540" height="350" />
